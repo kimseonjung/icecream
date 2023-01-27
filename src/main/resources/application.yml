@@ -7,8 +7,8 @@ spring:
     #url: jdbc:oracle:thin:@43.200.33.166:1522/xe
     #url: jdbc:oracle:thin:@192.168.0.24:1522/xe
     url: jdbc:oracle:thin:@localhost:1521/xe
-    username: uni
-    password: uni
+    username: restapi
+    password: restapi
   servlet:
     multipart:
       enabled: true
@@ -45,7 +45,7 @@ mybatis:
   # mapper.xml location Setting
   mapper-locations: mybatis/mapper/*.xml
   # alias Setting
-  type-aliases-package: com.uni.reactpro
+  type-aliases-package: com.uni.icecream
   configuration:
     map-underscore-to-camel-case: true
 
