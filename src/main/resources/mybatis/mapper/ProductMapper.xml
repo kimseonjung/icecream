@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uni.icecream.product.dao.ProductMapper">
 
+    <!--  제품 상세정보 조회  -->
     <select id="selectProduct" resultType="ProductDto">
         SELECT
                P.PRODUCT_CODE
@@ -23,7 +24,7 @@
         ORDER BY PRODUCT_CODE DESC
     </select>
 
-
+    <!-- 관리자 제품 상세정보 조회 -->
     <select id="selectProductForAdmin" resultType="ProductDto">
         SELECT
             P.PRODUCT_CODE
@@ -60,6 +61,7 @@
          ORDER BY PRODUCT_CODE DESC
     </select>
 
+    <!--  관리자 제품 목록 조회 페이징  -->
     <select id="selectProductListWithPagingForAdmin" parameterType="ProductDto" resultType="ProductDto">
         <![CDATA[
 
@@ -108,7 +110,7 @@
         ]]>
     </select>
 
-
+    <!-- 제품 목록 조회 페이징  -->
     <select id="selectProductListWithPaging" parameterType="ProductDto" resultType="ProductDto">
         <![CDATA[
 
@@ -250,6 +252,7 @@
         ORDER BY PRODUCT_CODE DESC
     </select>
 
+    <!--  관리자 제품 추가  -->
     <insert id="insertProduct" parameterType="ProductDto">
         INSERT INTO ICE_PRODUCT
         (
@@ -275,6 +278,7 @@
         )
     </insert>
 
+    <!--  관리자 제품 수정  -->
     <update id="updateProduct" parameterType="ProductDto">
         UPDATE ICE_PRODUCT
         SET
@@ -288,6 +292,7 @@
         WHERE PRODUCT_CODE = #{productCode}
     </update>
 
+    <!--  관리자 제품 삭제  -->
     <delete id="deleteProduct" parameterType="Long">
         DELETE
         FROM ICE_PRODUCT

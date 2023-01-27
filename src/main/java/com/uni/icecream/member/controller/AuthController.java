@@ -23,13 +23,15 @@ public class AuthController {
         this.authService = authService;
     }
 
+
+    /* 회원가입 */
     @PostMapping("/signup")
     public ResponseEntity<ResponseDto> signup(@RequestBody MemberDto memberDto) {
 
         return ResponseEntity.ok().body(new ResponseDto(HttpStatus.CREATED, "회원가입 성공", authService.signup(memberDto)));
     }
 
-
+    /* 로그인 */
     @PostMapping("/login")
     public ResponseEntity<ResponseDto> login(@RequestBody MemberDto memberDto) {
 

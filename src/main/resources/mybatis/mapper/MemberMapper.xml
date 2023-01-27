@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uni.icecream.member.dao.MemberMapper">
 
-    <select id="selectByMemberId" resultType="MemberDto">
+    <!--  회원정보조회  -->
+    <select id="selectByMemberCode" resultType="MemberDto">
         SELECT
             MEMBER_CODE
              ,  MEMBER_ID
@@ -13,7 +14,7 @@
              ,  MEMBER_ROLE
              ,  MEMBER_EMAIL
         FROM ICE_MEMBER
-        WHERE MEMBER_ID = #{memberId}
+        WHERE MEMBER_CODE = #{memberCode}
     </select>
 
     <select id="selectByEmail" resultType="MemberDto">
@@ -40,6 +41,7 @@
         WHERE MEMBER_EMAIL = #{email}
     </select>
 
+    <!-- 로그인  -->
     <select id="findByMemberId" resultType="MemberDto">
         SELECT
                 MEMBER_CODE
@@ -52,6 +54,7 @@
         WHERE MEMBER_ID = #{memberId}
     </select>
 
+    <!-- 회원가입 -->
     <insert id="insertMember" parameterType="MemberDto">
         INSERT INTO ICE_MEMBER
         (
@@ -71,4 +74,21 @@
         )
     </insert>
 
+    <!--  회원정보수정  -->
+    <update id="updateMyInfo" parameterType="MemberDto">
+        UPDATE ICE_MEMBER
+        SET
+            MEMBER_ID = #{memberId},
+            MEMBER_NAME = #{memberName},
+            MEMBER_PASSWORD = #{memberPassword},
+            MEMBER_EMAIL = #{memberEmail}
+        WHERE MEMBER_CODE = #{memberCode}
+    </update>
+
+    <!--  회원 탈퇴  -->
+    <delete id="deleteMyInfo" parameterType="Long">
+        DELETE
+        FROM ICE_MEMBER
+        WHERE MEMBER_CODE = #{MEMBER_CODE}
+    </delete>
 </mapper>

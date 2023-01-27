@@ -27,6 +27,7 @@ public class AuthService {
         this.tokenProvider = tokenProvider;
     }
 
+    /* 회원가입 */
     @Transactional
     public MemberDto signup(MemberDto memberDto) {
         log.info("[AuthService] Signup Start ===================================");
@@ -48,6 +49,7 @@ public class AuthService {
         return memberDto;
     }
 
+    /* 로그인 */
     @Transactional
     public TokenDto login(MemberDto memberDto) {
         log.info("[AuthService] Login Start ===================================");

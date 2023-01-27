@@ -28,6 +28,7 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
+    /*제품 상세정보 조회*/
     public ProductDto selectProduct(String productCode) {
         log.info("[ProductService] selectProduct Start ===================================");
         ProductDto productDto = productMapper.selectProduct(productCode);
@@ -36,7 +37,7 @@ public class ProductService {
         return productDto;
     }
 
-
+    /*제품 목록 조회*/
     public int selectProductTotal() {
         log.info("[ProductService] selectProductTotal Start ===================================");
         int result = productMapper.selectProductTotal();
@@ -45,6 +46,7 @@ public class ProductService {
         return result;
     }
 
+    /*제품 목록 조회 페이징*/
     public Object selectProductListWithPaging(SelectCriteria selectCriteria) {
         log.info("[ProductService] selectProductListWithPaging Start ===================================");
         List<ProductDto> productList = productMapper.selectProductListWithPaging(selectCriteria);
@@ -55,7 +57,7 @@ public class ProductService {
         log.info("[ProductService] selectProductListWithPaging End ===================================");
         return productList;
     }
-
+    /*관리자 제품 목록 조회 페이징*/
     public Object selectProductListWithPagingForAdmin(SelectCriteria selectCriteria) {
         log.info("[ProductService] selectProductListWithPagingForAdmin Start ===================================");
         List<ProductDto> productList = productMapper.selectProductListWithPagingForAdmin(selectCriteria);
@@ -67,7 +69,7 @@ public class ProductService {
         return productList;
     }
 
-
+    /*관리자 제품 상세정보 조회*/
     public Object selectProductForAdmin(String productCode) {
         log.info("[ProductService] selectProductForAdmin Start ===================================");
         ProductDto productDto = productMapper.selectProductForAdmin(productCode);
@@ -75,7 +77,7 @@ public class ProductService {
         log.info("[ProductService] selectProductForAdmin End ===================================");
         return productDto;
     }
-
+    /*관리자 제품 목록 조회*/
     public int selectProductTotalForAdmin() {
         log.info("[ProductService] selectProductTotal Start ===================================");
         int result = productMapper.selectProductTotalForAdmin();
@@ -84,7 +86,7 @@ public class ProductService {
         return result;
     }
 
-
+    /*관리자 제품 수정*/
     @Transactional
     public Object updateProduct(ProductDto productDto) {
         log.info("[ProductService] updateProduct Start ===================================");
@@ -128,6 +130,7 @@ public class ProductService {
         return (result > 0) ? "상품 업데이트 성공" : "상품 업데이트 실패";
     }
 
+    /*관리자 제품 추가*/
     @Transactional
     public String insertProduct(ProductDto productDto) {
         log.info("[ProductService] insertProduct Start ===================================");
@@ -218,7 +221,7 @@ public class ProductService {
         return productListWithSearchValue;
     }
 
-
+    /*관리자 제품 삭제*/
     public int deleteProduct(long productCode) {
 
         return productMapper.deleteProduct(productCode);
